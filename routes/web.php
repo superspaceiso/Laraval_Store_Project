@@ -12,5 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/store', function () {
+    return view('store');
+});
+
+Route::get('/store/product/', function () {
+    return view('store');
+});
+
+Route::get('/store/brand/', function () {
+    return view('store');
+});
+
+Route::get('/basket', function () {
+    return view('basket');
+});
+
+Route::get('/checkout', function () {
+    return view('checkout');
 });
