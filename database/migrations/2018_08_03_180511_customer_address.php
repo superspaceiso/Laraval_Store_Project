@@ -13,7 +13,10 @@ class CustomerAddress extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('customer_address', function (Blueprint $table) {
+        $table->integer('customer_id');
+        $table->integer('address_id');
+      });
     }
 
     /**
@@ -23,6 +26,6 @@ class CustomerAddress extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('customer_address');
     }
 }

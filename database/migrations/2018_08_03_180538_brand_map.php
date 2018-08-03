@@ -13,7 +13,10 @@ class BrandMap extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('brand_map', function (Blueprint $table) {
+        $table->integer('brand_id');
+        $table->integer('product_id');
+      });
     }
 
     /**
@@ -23,6 +26,6 @@ class BrandMap extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('brand_map');
     }
 }

@@ -13,7 +13,17 @@ class Products extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('products', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('name');
+        $table->text('description');
+        $table->integer('quantity');            
+        $table->boolean('on_sale');
+        $table->decimal('original_price',11,4);
+        $table->decimal('new_price',11,4);
+        $table->date('insert_date');
+        $table->date('updated_date');                                                          
+      });
     }
 
     /**
@@ -23,6 +33,6 @@ class Products extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 }

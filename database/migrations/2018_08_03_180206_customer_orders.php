@@ -13,7 +13,12 @@ class CustomerOrders extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('customer_orders', function (Blueprint $table) {
+        $table->increments('id');
+        $table->integer('customer_id');
+        $table->date('order_date');
+        $table->decimal('order_total',11,4);  
+      });
     }
 
     /**
@@ -23,6 +28,6 @@ class CustomerOrders extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('customer_orders');
     }
 }

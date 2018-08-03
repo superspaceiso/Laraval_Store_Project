@@ -13,7 +13,12 @@ class OrderItems extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('order_items', function (Blueprint $table) {
+        $table->integer('order_id');
+        $table->integer('customer_id');
+        $table->integer('item_quantity');
+        $table->decimal('order_total',11,4);  
+      });
     }
 
     /**
@@ -23,6 +28,6 @@ class OrderItems extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('order_items');
     }
 }
