@@ -1,7 +1,7 @@
 @extends ('layout')
 
 @section ('title')
-<title>Checkout</title>
+<title>{{ $title }}</title>
 @endsection
 
 @section ('content')
