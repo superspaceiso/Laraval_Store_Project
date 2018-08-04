@@ -11,13 +11,15 @@
 |
 */
 
+use App\Products;
+
 Route::get('/', function () {  
     return view('index')->with('title', 'Index');
 });
 
 Route::get('/store', function () {
   
-    $products = DB::table('products')->get();
+    $products = Products::IsForSale()->get();
     $title = 'Store';
     
     return view('store',compact('products','title'));
@@ -25,7 +27,7 @@ Route::get('/store', function () {
 
 Route::get('/store/product/{id}', function ($id) {
   
-    $product = DB::table('products')->find($id);
+    $product = Products::IsForSale()->find($id);
     
     return view('product',compact('product'));
 });
