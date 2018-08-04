@@ -22,7 +22,7 @@ class Products extends Migration
         $table->decimal('original_price',11,4);
         $table->decimal('new_price',11,4);
         $table->date('insert_date');
-        $table->date('updated_date');                                                          
+        $table->date('updated_date')->nullable();                                                          
       });
     }
 

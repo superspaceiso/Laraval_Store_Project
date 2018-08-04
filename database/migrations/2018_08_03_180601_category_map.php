@@ -13,7 +13,7 @@ class CategoryMap extends Migration
      */
     public function up()
     {
-      Schema::create('caegory_map', function (Blueprint $table) {
+      Schema::create('category_map', function (Blueprint $table) {
         $table->integer('category_id');
         $table->integer('product_id');
       });

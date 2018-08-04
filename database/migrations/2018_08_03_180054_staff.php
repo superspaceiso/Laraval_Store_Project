@@ -22,7 +22,7 @@ class Staff extends Migration
             $table->string('password');
             $table->integer('access_level');
             $table->date('creation_date');
-            $table->date('update_date');
+            $table->date('update_date')->nullable();
         });
     }
 

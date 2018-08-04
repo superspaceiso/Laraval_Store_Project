@@ -21,7 +21,7 @@ class Customer extends Migration
           $table->string('email')->unique();
           $table->string('password');
           $table->date('creation_date');
-          $table->date('update_date');
+          $table->date('update_date')->nullable();
         });
     }
 
