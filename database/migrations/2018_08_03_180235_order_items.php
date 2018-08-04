@@ -14,8 +14,10 @@ class OrderItems extends Migration
     public function up()
     {
       Schema::create('order_items', function (Blueprint $table) {
-        $table->integer('order_id');
-        $table->integer('customer_id');
+        $table->integer('order_id')->unsigned();
+        $table->integer('customer_id')->unsigned();
+        $table->foreign('order_id')->references('id')->on('customer_orders')->onDelete('cascade')->onUpdate('cascade');
+        $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade')->onUpdate('cascade');            
         $table->integer('item_quantity');
         $table->decimal('order_total',11,4);  
       });
