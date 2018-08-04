@@ -11,38 +11,45 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', function () {  
+    return view('index')->with('title', 'Index');
 });
 
 Route::get('/store', function () {
-    return view('store');
+  
+    $products = DB::table('products')->get();
+    $title = 'Store';
+    
+    return view('store',compact('products','title'));
 });
 
-Route::get('/store/product/{id}', function () {
-    return view('store');
+Route::get('/store/product/{id}', function ($id) {
+  
+    $product = DB::table('products')->find($id);
+    
+    return view('product',compact('product'));
 });
 
 Route::get('/store/brand/{category}', function () {
-    return view('store');
+    return view('store')->with('title', 'Category');
 });
 
 Route::get('/store/brand/{brand}', function () {
-    return view('store');
+    return view('store')->with('title', 'Brand');
 });
 
 Route::get('/basket', function () {
-    return view('basket');
+    return view('basket')->with('title', 'Basket');
 });
 
 Route::get('/checkout', function () {
-    return view('checkout');
+    return view('checkout')->with('title', 'Checkout');
 });
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin')->with('title', 'Admin');
 });
 
 Route::get('/account', function () {
-    return view('account');
+    return view('account')->with('title', 'Account');
 });
