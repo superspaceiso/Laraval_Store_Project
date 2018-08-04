@@ -16,7 +16,7 @@ class Staff extends Migration
         Schema::create('staff', function (Blueprint $table) {
             $table->increments('id');
             $table->string('firstname');
-            $table->string('middlename');
+            $table->string('middlename')->nullable();
             $table->string('surname');                           
             $table->string('email')->unique();
             $table->string('password');
