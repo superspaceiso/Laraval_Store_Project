@@ -14,10 +14,13 @@ class CategoryMap extends Migration
     public function up()
     {
       Schema::create('category_map', function (Blueprint $table) {
-        $table->integer('category_id')->unsigned();
-        $table->integer('product_id')->unsigned();
-        $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade')->onUpdate('cascade');
-        $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');           
+        $table->unsignedInteger('category_id');
+        $table->unsignedInteger('product_id');  
+      });
+      
+      Schema::table('category_map', function (Blueprint $table) {
+        $table->foreign('category_id')->references('id')->on('product_categories');
+        $table->foreign('product_id')->references('id')->on('products');           
       });
     }
 

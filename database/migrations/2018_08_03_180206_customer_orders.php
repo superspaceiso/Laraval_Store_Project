@@ -15,9 +15,14 @@ class CustomerOrders extends Migration
     {
       Schema::create('customer_orders', function (Blueprint $table) {
         $table->increments('id');
-        $table->integer('customer_id');
+        $table->unsignedInteger('customer_id');    
         $table->date('order_date');
-        $table->decimal('order_total',11,4);  
+        $table->decimal('order_total',11,4);
+        $table->date('shipped_date')->nullable();
+      });
+      
+      Schema::table('customer_orders', function (Blueprint $table) {
+        $table->foreign('customer_id')->references('id')->on('customer');  
       });
     }
 

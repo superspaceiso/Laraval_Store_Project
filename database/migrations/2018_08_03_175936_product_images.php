@@ -15,11 +15,15 @@ class ProductImages extends Migration
     {
       Schema::create('product_images', function (Blueprint $table) {
         $table->increments('id');
-        $table->integer('product_id');
+        $table->unsignedInteger('product_id');
         $table->string('name');
         $table->string('description');
         $table->string('original_image');
         $table->string('image_resize');
+      });
+      
+      Schema::table('product_images', function (Blueprint $table) {
+        $table->foreign('product_id')->references('id')->on('products');
       });
     }
 

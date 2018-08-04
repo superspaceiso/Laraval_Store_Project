@@ -14,12 +14,16 @@ class OrderItems extends Migration
     public function up()
     {
       Schema::create('order_items', function (Blueprint $table) {
-        $table->integer('order_id')->unsigned();
-        $table->integer('customer_id')->unsigned();
-        $table->foreign('order_id')->references('id')->on('customer_orders')->onDelete('cascade')->onUpdate('cascade');
-        $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade')->onUpdate('cascade');            
+        $table->increments('id');
+        $table->unsignedInteger('order_id');
+        $table->integer('product_id')->unsigned();
+        $table->string('product_name');
         $table->integer('item_quantity');
         $table->decimal('order_total',11,4);  
+      });
+      
+      Schema::table('order_items', function (Blueprint $table) {
+        $table->foreign('order_id')->references('id')->on('customer_orders');
       });
     }
 

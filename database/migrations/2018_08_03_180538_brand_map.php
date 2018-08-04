@@ -14,10 +14,13 @@ class BrandMap extends Migration
     public function up()
     {
       Schema::create('brand_map', function (Blueprint $table) {
-        $table->integer('brand_id')->unsigned();
-        $table->integer('product_id')->unsigned();
-        $table->foreign('brand_id')->references('id')->on('product_brands')->onDelete('cascade')->onUpdate('cascade');
-        $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');;        
+        $table->unsignedInteger('brand_id');
+        $table->unsignedInteger('product_id');     
+      });
+      
+      Schema::table('brand_map', function (Blueprint $table) {
+        $table->foreign('brand_id')->references('id')->on('product_brands');
+        $table->foreign('product_id')->references('id')->on('products');        
       });
     }
 
