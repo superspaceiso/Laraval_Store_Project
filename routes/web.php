@@ -72,16 +72,16 @@ Route::get('/admin/createstaff', function () {
     return view('createstaff')->with('title', 'Create Staff Member');
 });
 
-Route::get('/admin/editstaff', function () {
-    return view('editstaff')->with('title', 'Edit Staff Member');
+Route::get('/admin/staffsearch', function () {
+    return view('staffsearch')->with('title', 'Staff Search');
 });
 
 Route::get('/admin/createproduct', function () {
     return view('createproduct')->with('title', 'Create New Product');
 });
 
-Route::get('/admin/editproduct', function () {
-    return view('editproduct')->with('title', 'Edit Product');
+Route::get('/admin/productsearch', function () {
+    return view('productsearch')->with('title', 'Product Search');
 });
 
 Route::get('/account', function () {

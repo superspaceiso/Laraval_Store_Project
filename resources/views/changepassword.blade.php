@@ -14,19 +14,20 @@
   <div class="col-sm">
     <form>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Current Password</label>
+        <label class="col-sm-2 col-form-label">Current Password</label>
+          <div class="col-sm">
+            <input type="password" class="form-control">
+          </div>
+      </div>
+      <hr>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">New Password</label>
           <div class="col-sm">
             <input type="password" class="form-control">
           </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">New Password</label>
-          <div class="col-sm">
-            <input type="password" class="form-control">
-          </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm col-form-label">Repeat New Password</label>
+        <label class="col-sm-2 col-form-label">Repeat New Password</label>
           <div class="col-sm">
             <input type="password" class="form-control">
           </div>

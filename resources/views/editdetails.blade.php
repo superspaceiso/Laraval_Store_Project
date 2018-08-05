@@ -15,37 +15,37 @@
     <h2>Name and Contact</h2>
     <form>
       <div class="form-group row">
-        <label class="col-sm col-form-label">First Name</label>
+        <label class="col-sm-2 col-form-label">First Name</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Middle Name</label>
+        <label class="col-sm-2 col-form-label">Middle Name</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Surname</label>
+        <label class="col-sm-2 col-form-label">Surname</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Email Address</label>
+        <label class="col-sm-2 col-form-label">Email Address</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Telephone Number</label>
+        <label class="col-sm-2 col-form-label">Telephone Number</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Mobile Number</label>
+        <label class="col-sm-2 col-form-label">Mobile Number</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
@@ -58,43 +58,43 @@
     <h2>Address</h2>
     <form>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Address Line 1</label>
+        <label class="col-sm-2 col-form-label">Address Line 1</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Address Line 2</label>
+        <label class="col-sm-2 col-form-label">Address Line 2</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Address Line 3</label>
+        <label class="col-sm-2 col-form-label">Address Line 3</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Town</label>
+        <label class="col-sm-2 col-form-label">Town</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Postcode</label>
+        <label class="col-sm-2 col-form-label">Postcode</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">County</label>
+        <label class="col-sm-2 col-form-label">County</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm col-form-label">Country</label>
+        <label class="col-sm-2 col-form-label">Country</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  

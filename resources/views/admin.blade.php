@@ -25,7 +25,7 @@
     <h2>Staff</h2>
     <ul>
       <li><a href="admin/createstaff/">Create Staff Member</a></li>
-      <li><a href="admin/editstaff/">Edit Staff Member</a></li>
+      <li><a href="admin/staffsearch/">Staff Search</a></li>
     <ul>   
   </div>  
 </div>
@@ -35,7 +35,7 @@
     <h2>Products</h2>
     <ul>
       <li><a href="admin/createproduct/">Create New Product</a></li>
-      <li><a href="admin/editproduct/">Edit Product</a></li>
+      <li><a href="admin/productsearch/">Product Search</a></li>
     <ul>
   </div>  
 </div>            

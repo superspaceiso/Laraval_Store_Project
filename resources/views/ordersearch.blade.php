@@ -9,5 +9,18 @@
   <div class="col-sm">
     <h1>Look Up Order</h1> 
   </div>  
+</div>
+<div class="row">
+  <div class="col-sm">
+    <form>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2">
+          <a href="" class="btn btn-primary" role="button">Search</a>
+        </div>
+      </div>
+  </div>  
 </div>        
 @endsection
