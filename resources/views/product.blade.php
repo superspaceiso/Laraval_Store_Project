@@ -22,6 +22,7 @@
 </div>
 <div class="row">
   <div class="col-sm">
+    <hr>
     <h2>Product Overview</h2>
     <p>{{$product->description}}</p>
   </div>

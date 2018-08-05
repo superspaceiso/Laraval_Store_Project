@@ -48,12 +48,40 @@ Route::get('/checkout', function () {
     return view('checkout')->with('title', 'Checkout');
 });
 
+Route::get('/login', function () {
+    return view('login')->with('title', 'Log In');
+});
+
 Route::get('/invoice/{id}', function () {
     return view('checkout')->with('title', 'Checkout');
 });
 
 Route::get('/admin', function () {
     return view('admin')->with('title', 'Admin');
+});
+
+Route::get('/admin/accountsearch', function () {
+    return view('accountsearch')->with('title', 'Account Search');
+});
+
+Route::get('/admin/ordersearch', function () {
+    return view('ordersearch')->with('title', 'Order Search');
+});
+
+Route::get('/admin/createstaff', function () {
+    return view('createstaff')->with('title', 'Create Staff Member');
+});
+
+Route::get('/admin/editstaff', function () {
+    return view('editstaff')->with('title', 'Edit Staff Member');
+});
+
+Route::get('/admin/createproduct', function () {
+    return view('createproduct')->with('title', 'Create New Product');
+});
+
+Route::get('/admin/editproduct', function () {
+    return view('editproduct')->with('title', 'Edit Product');
 });
 
 Route::get('/account', function () {
