@@ -9,7 +9,7 @@
   <div class="col-sm">
     <h1>Store</h1>
   </div>
-</div> 
+</div>
 <div class="row">
   <div class="col-sm">
     <table class="table">
@@ -19,10 +19,10 @@
         <td><a href="store/product/{{$product->id}}/">{{$product->name}}</a></td>
         <td>{{$product->quantity > 0 ? "In Stock" : "Out of Stock"}}</td>
         <td>&pound;{{round($product->original_price,2)}}</td>
-        <td><a href="{{$product->id}}" class="btn btn-info" role="button">Add to Basket</a></td>
+        <td><a href="{{$product->id}}" class="btn btn-primary" role="button">Add To Basket</a></td>
       </tr>
       @endforeach
     </table>
   </div>
-</div>   
+</div>
 @endsection

@@ -16,6 +16,7 @@
           <a class="nav-link" href="/">Home</a>
           <a class="nav-link" href="/store">Store</a>
           <a class="nav-link" href="/basket">Basket</a>
+          <a class="nav-link" href="/account">Account</a>
         </nav>
       </div>
     </div>

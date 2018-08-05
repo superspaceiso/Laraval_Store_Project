@@ -32,11 +32,11 @@ Route::get('/store/product/{id}', function ($id) {
     return view('product',compact('product'));
 });
 
-Route::get('/store/brand/{category}', function () {
+Route::get('/store/{category}', function () {
     return view('store')->with('title', 'Category');
 });
 
-Route::get('/store/brand/{brand}', function () {
+Route::get('/store/{brand}', function () {
     return view('store')->with('title', 'Brand');
 });
 
@@ -48,10 +48,22 @@ Route::get('/checkout', function () {
     return view('checkout')->with('title', 'Checkout');
 });
 
+Route::get('/invoice/{id}', function () {
+    return view('checkout')->with('title', 'Checkout');
+});
+
 Route::get('/admin', function () {
     return view('admin')->with('title', 'Admin');
 });
 
 Route::get('/account', function () {
     return view('account')->with('title', 'Account');
+});
+
+Route::get('/account/editdetails', function () {
+    return view('editdetails')->with('title', 'Edit Details');
+});
+
+Route::get('/account/changepassword', function () {
+    return view('changepassword')->with('title', 'Change Password');
 });
