@@ -12,8 +12,11 @@
 */
 
 use App\Products;
+use App\JsonDecoder;
+
 
 Route::get('/', function () {  
+  
     return view('index')->with('title', 'Index');
 });
 
@@ -89,7 +92,11 @@ Route::get('/account', function () {
 });
 
 Route::get('/account/editdetails', function () {
-    return view('editdetails')->with('title', 'Edit Details');
+  
+    $title = 'Edit Details';
+    $countries = new JsonDecoder('http://country.io/names.json');
+    
+    return view('editdetails', compact('title','countries'));
 });
 
 Route::get('/account/changepassword', function () {

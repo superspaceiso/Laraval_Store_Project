@@ -39,13 +39,13 @@
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Telephone Number</label>
+        <label class="col-sm-2 col-form-label">Mobile Number</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mobile Number</label>
+        <label class="col-sm-2 col-form-label">Phone Number</label>
         <div class="col-sm">
           <input type="text" class="form-control">
         </div>  
@@ -90,7 +90,15 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">County</label>
         <div class="col-sm">
-          <input type="text" class="form-control">
+          <select class="custom-select">
+            @foreach($countries->decode() as $country)
+              @if($country == 'United Kingdom')
+                <option selected>{{$country}}</option>
+              @else 
+                <option>{{$country}}</option>
+              @endif
+            @endforeach
+          </select>
         </div>  
       </div>
       <div class="form-group row">

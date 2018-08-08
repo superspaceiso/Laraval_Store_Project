@@ -17,8 +17,8 @@
       <input placeholder="First Name"></input>
       <input placeholder="Surname"></input>
       <input placeholder="Email Address"></input>
-      <input placeholder="Home Telephone"></input>
       <input placeholder="Mobile Telephone"></input>
+      <input placeholder="Home Telephone"></input>
     </form>
   </div>
   <div class="col-sm">
@@ -31,7 +31,7 @@
       <input placeholder="Town/City"></input>
     </form>
   </div>
-</div>  
+</div>
 <div class="row">
   <div class="col-sm">
     <h2>Your Order</h2>
@@ -43,8 +43,8 @@
           <th>Price</th>
           <th>Total</th>
         </tr>
-      </thead>  
-    </table>  
+      </thead>
+    </table>
   </div>
 </div>
 @endsection
