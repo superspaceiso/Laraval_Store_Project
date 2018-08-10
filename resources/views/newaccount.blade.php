@@ -7,10 +7,9 @@
 @section ('content')
 <div class="row">
   <div class="col-sm">
-    <h1>Log In</h1>
-    <a href="/new-account">If you don't already have an account, please click here to create one</a> 
-  </div>
-</div>    
+    <h1>Create New Account</h1> 
+  </div>  
+</div>
 <div class="row">
   <div class="col-sm">
     <form method="post">
@@ -28,7 +27,13 @@
           </div>
       </div>
       <div class="form-group row">
-        <button type="submit" class="btn btn-primary">Log In</button>
+        <label class="col-sm-2 col-form-label">Confirm Password</label>
+          <div class="col-sm">
+            <input type="password" class="form-control">
+          </div>
+      </div>
+      <div class="form-group row">
+        <button type="submit" class="btn btn-primary">Create Account</button>
         <a class="btn btn-danger" href="/" role="button">Cancel</a>   
       </div>
     </form>

@@ -7,17 +7,17 @@
 @section ('content')
 <div class="row">
   <div class="col-sm">
-    <h1>Create New Product</h1> 
+    <h1>Edit Product</h1> 
   </div>  
 </div>
 <div class="row">
   <div class="col-sm">
-    <form method="post">
+    <form>
       @csrf
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Product Name</label>
         <div class="col-sm">
-          <input type="text" class="form-control" autofocus>
+          <input type="text" class="form-control">
         </div>
       </div>
       <div class="form-group row">
@@ -35,13 +35,13 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Product Price</label>
         <div class="col-sm">
-          <input type="text" step="any" min="0" class="form-control">
+          <input type="number" step="any" min="0" class="form-control">
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Product Quantity</label>
         <div class="col-sm">
-          <input type="number" min="0"class="form-control">
+          <input type="number" min="0" class="form-control">
         </div>
       </div>
       <div class="form-group row">

@@ -7,7 +7,7 @@
 @section ('content')
 <div class="row">
   <div class="col-sm">
-    <h1>Edit Product</h1> 
+    <h1>Product Search</h1> 
   </div>  
 </div>   
 <div class="row">
@@ -15,12 +15,13 @@
     <form>
       <div class="form-group row">
         <div class="col-sm-10">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="Enter Product Name or ID" autofocus>
         </div>
         <div class="col-sm-2">
           <a href="" class="btn btn-primary" role="button">Search</a>
         </div>
       </div>
+    </form>  
   </div>  
 </div>
 <div class="row">
@@ -45,7 +46,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><a href="" class="btn btn-primary" role="button">Edit</a></td>
+        <td><a href="editproduct" class="btn btn-primary" role="button">Edit</a></td>
         <td><a href="" class="btn btn-danger" role="button">Delete</a></td>
       </tr> 
     </table>

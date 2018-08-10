@@ -13,7 +13,8 @@
 <div class="row">
   <div class="col-sm">
     <h2>Name and Contact</h2>
-    <form>
+    <form method="post" action="/updatedetails">
+      @csrf
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">First Name</label>
         <div class="col-sm">
@@ -90,6 +91,12 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">County</label>
         <div class="col-sm">
+          <input type="text" class="form-control">
+        </div>  
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Country</label>
+        <div class="col-sm">
           <select class="custom-select">
             @foreach($countries->decode() as $country)
               @if($country == 'United Kingdom')
@@ -102,18 +109,10 @@
         </div>  
       </div>
       <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Country</label>
-        <div class="col-sm">
-          <input type="text" class="form-control">
-        </div>  
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a class="btn btn-danger" href="/account" role="button">Cancel</a>   
       </div>
     </form>
   </div>
-</div>
-<div class="row">
-  <div class="col-sm">
-    <a href="account/editdetails" class="btn btn-primary" role="button">Update</a>
-    <a href="/account" class="btn btn-primary" role="button">Cancel</a>
-  </div>
-</div>       
+</div>     
 @endsection

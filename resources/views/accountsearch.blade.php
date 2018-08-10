@@ -15,7 +15,7 @@
     <form>
       <div class="form-group row">
         <div class="col-sm-10">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" placeholder="Enter Customer Name, Email, Account Number" autofocus>
         </div>
         <div class="col-sm-2">
           <a href="" class="btn btn-primary" role="button">Search</a>
