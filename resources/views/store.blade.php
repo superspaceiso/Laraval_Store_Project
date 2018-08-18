@@ -15,8 +15,8 @@
     <table class="table">
       @foreach($products as $product)
       <tr>
-        <td><a href="https://placeholder.com"><img src="http://via.placeholder.com/100x100"></a></td>
-        <td><a href="store/product/{{$product->id}}/">{{$product->name}}</a></td>
+        <td><a href="/store/product/{{$product->id}}/"><img src="http://via.placeholder.com/100x100"></a></td>
+        <td><a href="/store/product/{{$product->id}}/">{{$product->name}}</a></td>
         <td>{{$product->quantity > 0 ? "In Stock" : "Out of Stock"}}</td>
         <td>&pound;{{round($product->original_price,2)}}</td>
         <td><a id="{{$product->id}}" class="btn btn-primary addtobasket" role="button">Add To Basket</a></td>

@@ -10,16 +10,16 @@
     <h1>My Account</h1>
   </div>
 </div>
-<div class="row">  
+<div class="row">
   <div class="col-sm">
     <h2>Personal Details</h2>
     <ul>
-      <li>Account Number:</li>
-      <li>Name:</li>
-      <li>Email:</li>
-      <li>Mobile Number:</li>
-      <li>Phone Number:</li>
-      <li>Address:</li>  
+      <li>Account Number: <strong>{{$account_info[0]->id}}</strong></li>
+      <li>Name: <strong>{{$account_info[0]->firstname}}  @if(!$account_info[0]->middlename == NULL) {{$account_info[0]->middlename}} @endif {{$account_info[0]->surname}}</strong></li>
+      <li>Email: <strong>{{$account_info[0]->email}}</strong></li>
+      <li>Mobile Number: <strong></strong></li>
+      <li>Phone Number: <strong></strong></li>
+      <li>Address: <strong>{{$account_info[0]->address_line1}},@if(!$account_info[0]->address_line2 == NULL) {{$account_info[0]->address_line2}}, @endif @if(!$account_info[0]->address_line3 == NULL) {{$account_info[0]->address_line3}}, @endif {{$account_info[0]->town}}, {{$account_info[0]->postcode}}, {{$account_info[0]->country}}</strong></li>
     </ul>
   </div>
   <div class="col-sm">
@@ -28,11 +28,11 @@
       <a href="account/editdetails" class="btn btn-primary" role="button">Edit Details</a>
     </div>
     <div class="col-sm">
-      <a href="account/changepassword" class="btn btn-primary" role="button">Change Password</a>  
+      <a href="account/changepassword" class="btn btn-primary" role="button">Change Password</a>
     </div>
   </div>
 </div>
-<div class="row">  
+<div class="row">
   <div class="col-sm">
     <h2>Order History</h2>
     <table class="table">
@@ -43,8 +43,8 @@
           <th>Total</th>
           <th>Status</th>
         </tr>
-      </thead>  
+      </thead>
     </table>
   </div>
-</div>    
+</div>
 @endsection

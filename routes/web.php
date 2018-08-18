@@ -12,6 +12,7 @@
 */
 
 use App\Products;
+use App\User;
 use App\JsonDecoder;
 
 
@@ -112,7 +113,13 @@ Route::get('/admin/product-search/edit-product', function () {
 
 Route::get('/account', function () {
 
-    return view('account')->with('title', 'Account');
+    $account_info = User::AccountInfo(1);
+
+    $title = 'Account';
+
+    //dd($account_info);
+
+    return view('account', compact('account_info','title'));
 });
 
 Route::get('/account/edit-details', function () {
