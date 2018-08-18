@@ -22,8 +22,7 @@ Route::get('/', function () {
 
 Route::get('/store', function () {
 
-    //$products = Products::IsForSale()->InStock()->get();
-    $products = DB::table('products')->where('on_sale','=',1)->where('quantity','>=',0)->get();
+    $products = Products::ListProducts();
 
     $title = 'Store';
 
@@ -32,21 +31,27 @@ Route::get('/store', function () {
 
 Route::get('/store/product/{id}', function ($id) {
 
-    //$product = Products::IsForSale()->find($id);
-    $product = DB::table('products')->join('brand_map', 'products.id', '=', 'brand_map.product_id')->join('product_brands', 'product_brands.id','=','brand_map.brand_id')->select('product_brands.name as brand_name','products.*')->where('products.id','=',$id)->get();
+    $product = Products::GetProduct($id);
 
     return view('product',compact('product'));
 });
 
-Route::get('/store/{category}', function () {
-    return view('store')->with('title', 'Category');
+Route::get('/store/category/{category}', function ($category) {
+
+    $products = Products::GetCategory($category);
+
+    $title = 'Store';
+
+    return view('store',compact('products','title'));
 });
 
-Route::get('/store/{brand}', function () {
+Route::get('/store/brand/{brand}', function ($brand) {
 
-    $brand = DB::table('product_brands');
+    $products = Products::GetBrand($brand);
 
-    return view('store')->with('title', 'Brand');
+    $title = 'Store';
+
+    return view('store',compact('products','title'));
 });
 
 Route::get('/basket', function () {
@@ -106,9 +111,6 @@ Route::get('/admin/product-search/edit-product', function () {
 });
 
 Route::get('/account', function () {
-
-    //session_start();
-    //if (!isset($_SESSION['email'])) {header('Location: /login');}
 
     return view('account')->with('title', 'Account');
 });
