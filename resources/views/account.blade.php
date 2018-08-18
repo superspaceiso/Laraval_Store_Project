@@ -19,16 +19,16 @@
       <li>Email: <strong>{{$account_info[0]->email}}</strong></li>
       <li>Mobile Number: <strong></strong></li>
       <li>Phone Number: <strong></strong></li>
-      <li>Address: <strong>{{$account_info[0]->address_line1}},@if(!$account_info[0]->address_line2 == NULL) {{$account_info[0]->address_line2}}, @endif @if(!$account_info[0]->address_line3 == NULL) {{$account_info[0]->address_line3}}, @endif {{$account_info[0]->town}}, {{$account_info[0]->postcode}}, {{$account_info[0]->country}}</strong></li>
+      <li>Address: <strong>{{$account_info[0]->address_line1}},@if(!$account_info[0]->address_line2 == NULL) {{$account_info[0]->address_line2}}, @endif @if(!$account_info[0]->address_line3 == NULL) {{$account_info[0]->address_line3}}, @endif {{$account_info[0]->town}},@if(!$account_info[0]->county == NULL) {{$account_info[0]->county}}, @endif {{$account_info[0]->postcode}}, {{$account_info[0]->country}}</strong></li>
     </ul>
   </div>
   <div class="col-sm">
     <h2>Change Details</h2>
     <div class="col-sm">
-      <a href="account/editdetails" class="btn btn-primary" role="button">Edit Details</a>
+      <a href="account/edit-details" class="btn btn-primary" role="button">Edit Details</a>
     </div>
     <div class="col-sm">
-      <a href="account/changepassword" class="btn btn-primary" role="button">Change Password</a>
+      <a href="account/change-password" class="btn btn-primary" role="button">Change Password</a>
     </div>
   </div>
 </div>

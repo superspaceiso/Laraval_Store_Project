@@ -124,10 +124,13 @@ Route::get('/account', function () {
 
 Route::get('/account/edit-details', function () {
 
+    $account_info = User::AccountInfo(1);
+
     $title = 'Edit Details';
+
     $countries = new JsonDecoder('http://country.io/names.json');
 
-    return view('editdetails', compact('title','countries'));
+    return view('editdetails', compact('title','account_info','countries'));
 });
 
 Route::get('/account/change-password', function () {
