@@ -44,6 +44,14 @@
           <th>Status</th>
         </tr>
       </thead>
+      @foreach($account_orders as $order)
+        <tr>
+          <td>{{date('d/m/Y', strtotime($order->order_date))}}</td>
+          <td>{{$order->id}}</td>
+          <td>&pound;{{round($order->order_total,2)}}</td>
+          <td>@if($order->shipped_date == NULL) Not Shipped @else {{$order->shipped_date}}@endif</td>
+        </tr>
+      @endforeach
     </table>
   </div>
 </div>
