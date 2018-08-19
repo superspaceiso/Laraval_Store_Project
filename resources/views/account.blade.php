@@ -17,8 +17,8 @@
       <li>Account Number: <strong>{{$account_info[0]->id}}</strong></li>
       <li>Name: <strong>{{$account_info[0]->firstname}}  @if(!$account_info[0]->middlename == NULL) {{$account_info[0]->middlename}} @endif {{$account_info[0]->surname}}</strong></li>
       <li>Email: <strong>{{$account_info[0]->email}}</strong></li>
-      <li>Mobile Number: <strong></strong></li>
-      <li>Phone Number: <strong></strong></li>
+      <li>Mobile Number: <strong>{{$account_info[0]->mobile_number}}</strong></li>
+      <li>Phone Number: <strong>{{$account_info[0]->phone_number}}</strong></li>
       <li>Address: <strong>{{$account_info[0]->address_line1}},@if(!$account_info[0]->address_line2 == NULL) {{$account_info[0]->address_line2}}, @endif @if(!$account_info[0]->address_line3 == NULL) {{$account_info[0]->address_line3}}, @endif {{$account_info[0]->town}},@if(!$account_info[0]->county == NULL) {{$account_info[0]->county}}, @endif {{$account_info[0]->postcode}}, {{$account_info[0]->country}}</strong></li>
     </ul>
   </div>
