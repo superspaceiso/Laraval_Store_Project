@@ -114,7 +114,7 @@ Route::get('/admin/product-search/edit-product', function () {
 Route::get('/account', function () {
 
     $account_info = User::AccountInfo(1);
-    $account_orders = User::Orders(1);
+    $account_orders = User::OrderItems(1);
 
     $title = 'Account';
 
