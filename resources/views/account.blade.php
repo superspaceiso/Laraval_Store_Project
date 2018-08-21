@@ -46,11 +46,20 @@
       </thead>
       @foreach($account_orders as $order)
         <tr>
-          <td>{{date('d/m/Y', strtotime($order->order_date))}}</td>
-          <td>{{$order->id}}</td>
-          <td>&pound;{{round($order->order_total,2)}}</td>
-          <td>@if($order->shipped_date == NULL) Not Shipped @else {{$order->shipped_date}}@endif</td>
+          <td>{{date('d/m/Y', strtotime($order['order_date']))}}</td>
+          <td></td>
+          <td>&pound;{{round($order['order_total'],2)}}</td>
+          <td>@if($order['shipped_date'] == NULL) Not Shipped @else {{$order['shipped_date']}}@endif</td>
         </tr>
+        <tr>
+          <td colspan="4">
+            @foreach($order['items'] as $order_items)
+              {{$order_items['product_name']}}
+              <strong>Quantity:</strong> {{$order_items['quantity']}}
+              <strong>Subtotal:</strong> &pound;{{round($order_items['sub_total'],2)}}<br>
+            @endforeach
+          </td>
+        <tr>
       @endforeach
     </table>
   </div>
