@@ -13,6 +13,7 @@
 
 use App\Products;
 use App\User;
+use App\Admin;
 use App\JsonDecoder;
 
 
@@ -76,6 +77,9 @@ Route::get('/invoice/{id}', function () {
 });
 
 Route::get('/admin', function () {
+
+    $outstanding = Admin::CountOutstanding();
+
     return view('admin')->with('title', 'Admin');
 });
 
@@ -88,7 +92,12 @@ Route::get('/admin/order-search', function () {
 });
 
 Route::get('/admin/outstanding-orders', function () {
-    return view('orders')->with('title', 'Outstanding Orders');
+
+    $orders = Admin::OutstandingOrders();
+
+    $title = 'Outstanding Orders';
+
+    return view('orders', compact('orders', 'title'));
 });
 
 Route::get('/admin/create-staff', function () {
