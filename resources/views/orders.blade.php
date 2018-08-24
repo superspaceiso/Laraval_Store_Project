@@ -16,7 +16,7 @@
     <h3>Order Number: {{$order['order_id']}}</h3>
   </div>
   <div class="col-sm">
-    <h3>Order Date: {{$order['order_date']}}</h3>
+    <h3>Order Date: {{date('d/m/Y', strtotime($order['order_date']))}}</h3>
   </div>
 </div>
 <div class="row">

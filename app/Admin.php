@@ -6,14 +6,34 @@ use Illuminate\Support\Facades\DB;
 
 class Admin
 {
-    public static function OustandingCustomerOrders()
+    public static function CustomerOrders()
     {
-        return DB::table('customer_orders')->join('customer','customer.id','=','customer_id')->join('customer_address', 'customer.id', '=', 'customer_address.customer_id')->join('customer_addresses', 'customer_addresses.id', '=', 'customer_address.address_id')->select('customer_orders.*','customer.firstname','customer.middlename','customer.surname','customer.email','customer.mobile_number','customer.phone_number','customer_addresses.address_line1','customer_addresses.address_line2','customer_addresses.address_line3','customer_addresses.town','customer_addresses.postcode','customer_addresses.county','customer_addresses.country')->whereNull('customer_orders.shipped_date')->get();
+        return DB::table('customer_orders')->join('customer','customer.id','=','customer_id')->join('customer_address', 'customer.id', '=', 'customer_address.customer_id')->join('customer_addresses', 'customer_addresses.id', '=', 'customer_address.address_id')->select('customer_orders.*','customer.firstname','customer.middlename','customer.surname','customer.email','customer.mobile_number','customer.phone_number','customer_addresses.address_line1','customer_addresses.address_line2','customer_addresses.address_line3','customer_addresses.town','customer_addresses.postcode','customer_addresses.county','customer_addresses.country');
     }
 
-    public static function CountOutstanding()
+    public static function ShippedOrders()
     {
-      return DB::table('customer_orders')->whereNull('shipped_date')->count();
+      return self::CustomerOrders()->whereNotNull('customer_orders.shipped_date')->get();
+    }
+
+    public static function UnshippedOrders()
+    {
+      return self::CustomerOrders()->whereNull('customer_orders.shipped_date')->get();
+    }
+
+    public static function Count()
+    {
+      return DB::table('customer_orders');
+    }
+
+    public static function CountUnshipped()
+    {
+      return self::Count()->whereNull('shipped_date')->count();
+    }
+
+    public static function CountShipped()
+    {
+      return self::Count()->whereNotNull('shipped_date')->count();
     }
 
     public static function Items($id)
@@ -24,7 +44,7 @@ class Admin
     public static function OutstandingOrders()
     {
         $orders = [];
-        foreach (self::OustandingCustomerOrders() as $Order) {
+        foreach (self::UnshippedOrders() as $Order) {
             $orders[$Order->id]['firstname'] = $Order->firstname;
             $orders[$Order->id]['middlename'] = $Order->middlename;
             $orders[$Order->id]['surname'] = $Order->surname;

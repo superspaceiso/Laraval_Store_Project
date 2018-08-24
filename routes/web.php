@@ -78,9 +78,12 @@ Route::get('/invoice/{id}', function () {
 
 Route::get('/admin', function () {
 
-    $outstanding = Admin::CountOutstanding();
+    $outstanding = Admin::CountUnshipped();
+    $processed = Admin::CountShipped();
 
-    return view('admin')->with('title', 'Admin');
+    $title = 'Admin';
+
+    return view('admin', compact('outstanding','processed','title'));
 });
 
 Route::get('/admin/account-search', function () {
@@ -122,8 +125,8 @@ Route::get('/admin/product-search/edit-product', function () {
 
 Route::get('/account', function () {
 
-    $account_info = User::AccountInfo(1);
-    $account_orders = User::OrderItems(1);
+    $account_info = User::AccountInfo(2);
+    $account_orders = User::OrderItems(2);
 
     $title = 'Account';
 
