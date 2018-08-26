@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Support\Facades\DB;
 
-class Admin
+class Order
 {
     public static function CustomerOrders()
     {
