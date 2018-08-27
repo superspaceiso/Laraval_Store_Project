@@ -8,32 +8,37 @@ class Order
 {
     public static function CustomerOrders()
     {
-        return DB::table('customer_orders')->join('customer','customer.id','=','customer_id')->join('customer_address', 'customer.id', '=', 'customer_address.customer_id')->join('customer_addresses', 'customer_addresses.id', '=', 'customer_address.address_id')->select('customer_orders.*','customer.firstname','customer.middlename','customer.surname','customer.email','customer.mobile_number','customer.phone_number','customer_addresses.address_line1','customer_addresses.address_line2','customer_addresses.address_line3','customer_addresses.town','customer_addresses.postcode','customer_addresses.county','customer_addresses.country');
+        return DB::table('customer_orders')->join('customer', 'customer.id', '=', 'customer_id')->join('customer_address', 'customer.id', '=', 'customer_address.customer_id')->join('customer_addresses', 'customer_addresses.id', '=', 'customer_address.address_id')->select('customer_orders.*', 'customer.firstname', 'customer.middlename', 'customer.surname', 'customer.email', 'customer.mobile_number', 'customer.phone_number', 'customer_addresses.address_line1', 'customer_addresses.address_line2', 'customer_addresses.address_line3', 'customer_addresses.town', 'customer_addresses.postcode', 'customer_addresses.county', 'customer_addresses.country');
     }
 
     public static function ShippedOrders()
     {
-      return self::CustomerOrders()->whereNotNull('customer_orders.shipped_date')->get();
+        return self::CustomerOrders()->whereNotNull('customer_orders.shipped_date')->get();
     }
 
     public static function UnshippedOrders()
     {
-      return self::CustomerOrders()->whereNull('customer_orders.shipped_date')->get();
+        return self::CustomerOrders()->whereNull('customer_orders.shipped_date')->get();
+    }
+
+    public static function SearchOrder($order_id)
+    {
+        return self::CustomerOrders()->where('customer_orders.id', '=', $order_id)->get();
     }
 
     public static function Count()
     {
-      return DB::table('customer_orders');
+        return DB::table('customer_orders');
     }
 
     public static function CountUnshipped()
     {
-      return self::Count()->whereNull('shipped_date')->count();
+        return self::Count()->whereNull('shipped_date')->count();
     }
 
     public static function CountShipped()
     {
-      return self::Count()->whereNotNull('shipped_date')->count();
+        return self::Count()->whereNotNull('shipped_date')->count();
     }
 
     public static function Items($id)

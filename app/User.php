@@ -8,17 +8,17 @@ class User
 {
     public static function Customer()
     {
-      return DB::table('customer');
+        return DB::table('customer');
     }
 
     public static function CustomerAddress()
     {
-      return DB::table('customer_addresses');
+        return DB::table('customer_addresses');
     }
 
     public static function AddressJunction()
     {
-      return DB::table('customer_address');
+        return DB::table('customer_address');
     }
 
     public static function AccountInfo($id)
@@ -53,20 +53,25 @@ class User
         return $orders;
     }
 
-  public static function CreateUser($firstname,$middlename,$surname,$email,$password,$mobile_number,$phone_number,$address_line1,$address_line2,$address_line3,$town,$postcode,$county,$country)
-  {
-    $customer_id = self::Customer(['firstname' => $firstname, 'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'mobile_number' => $mobile_number, 'phone_number' => $phone_number])->insertGetId();
-    $address_id = self::CustomerAddress(['address_line1' => $address_line1,'address_line2' => $address_line2,'address_line3' => $address_line3,'town' => $town,'postcode' => $postcode,'county' => $county,'country' => $country])->insertGetId();
-    self::AddressJunction()->insert(['customer_id' => $customer_id,'address_id' => $address_id]);
-  }
+    public static function CreateUser($firstname, $middlename, $surname, $email, $password, $mobile_number, $phone_number, $address_line1, $address_line2, $address_line3, $town, $postcode, $county, $country)
+    {
+        $customer_id = self::Customer(['firstname' => $firstname, 'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'mobile_number' => $mobile_number, 'phone_number' => $phone_number])->insertGetId();
+        $address_id = self::CustomerAddress(['address_line1' => $address_line1,'address_line2' => $address_line2,'address_line3' => $address_line3,'town' => $town,'postcode' => $postcode,'county' => $county,'country' => $country])->insertGetId();
+        self::AddressJunction()->insert(['customer_id' => $customer_id,'address_id' => $address_id]);
+    }
 
-  public static function UpdateUser($id,$firstname,$middlename,$surname,$email,$password,$mobile_number,$phone_number,$address_line1,$address_line2,$address_line3,$town,$postcode,$county,$country)
-  {
-    self::Customer()->where('id',$id)->update(['firstname' => $firstname, 'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'mobile_number' => $mobile_number, 'phone_number' => $phone_number]);
-  }
+    public static function UpdateUser($id, $firstname, $middlename, $surname, $email, $password, $mobile_number, $phone_number, $address_line1, $address_line2, $address_line3, $town, $postcode, $county, $country)
+    {
+        self::Customer()->where('id', $id)->update(['firstname' => $firstname, 'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'mobile_number' => $mobile_number, 'phone_number' => $phone_number]);
+    }
 
-  public static function DeleteUser()
-  {
-    self::Customer()->where('id',$id)->delete();
-  }
+    public static function SearchUser($query)
+    {
+        return self::Customer()->where('id', '=', $query)->orWhere('email', 'like', '%'.$query.'%')->orWhere('surname', 'like', '%'.$query.'%')->get();
+    }
+
+    public static function DeleteUser()
+    {
+        self::Customer()->where('id', $id)->delete();
+    }
 }
