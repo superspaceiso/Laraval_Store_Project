@@ -87,10 +87,20 @@ Route::get('/admin', function () {
 });
 
 Route::get('/admin/account-search', function () {
+
+    $search = User::SearchUser('Frederick');
+
+    dd($search);
+
     return view('accountsearch')->with('title', 'Account Search');
 });
 
 Route::get('/admin/order-search', function () {
+
+    $search = Order::SearchOrder(2);
+
+    dd($search);
+
     return view('ordersearch')->with('title', 'Order Search');
 });
 
@@ -111,9 +121,9 @@ Route::get('/admin/staff-search', function () {
     return view('staffsearch')->with('title', 'Staff Search');
 });
 
-Route::get('/admin/create-product', function () {
-    return view('createproduct')->with('title', 'Create New Product');
-});
+Route::get('/admin/create-product', 'ProductController@page');
+
+Route::post('/admin/create-product', 'ProductController@store');
 
 Route::get('/admin/product-search', function () {
 

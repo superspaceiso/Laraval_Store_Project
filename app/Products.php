@@ -58,7 +58,7 @@ class Products
 
     public static function CreateProduct($product_name, $product_brand, $product_category, $product_price, $product_quantity, $product_description, $product_onsale)
     {
-        $product_id = self::Product()->insertGetId(['name' => $product_name, 'description' => $product_description, 'quantity' => $product_quantity, 'on_sale' => $product_onsale, 'original_price' => $product_price]);
+        $product_id = self::Product()->insertGetId(['name' => $product_name, 'description' => $product_description, 'quantity' => $product_quantity, 'on_sale' => $product_onsale, 'original_price' => $product_price,'insert_date' => date('Y-m-d')]);
         $brand_id = self::ProductBrand()->insertGetId(['name' => $product_brand]);
         $category_id = self::ProductCategory()->insertGetId(['name' => $product_category]);
         self::BrandJunction()->insert(['brand_id' => $brand_id, 'product_id' => $product_id]);

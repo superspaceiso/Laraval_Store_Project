@@ -33,7 +33,7 @@ class User
 
     public static function Items($id)
     {
-        return self::Customer()->join('order_items', 'customer_orders.id', '=', 'order_id')->select('order_items.*', 'order_items.order_total as sub_total')->where('customer_orders.id', '=', $id)->get();
+        return DB::table('customer_orders')->join('order_items', 'customer_orders.id', '=', 'order_id')->select('order_items.*', 'order_items.order_total as sub_total')->where('customer_orders.id', '=', $id)->get();
     }
 
     public static function OrderItems($id)
