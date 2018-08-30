@@ -113,17 +113,18 @@ Route::get('/admin/outstanding-orders', function () {
     return view('orders', compact('orders', 'title'));
 });
 
-Route::get('/admin/create-staff', function () {
-    return view('createstaff')->with('title', 'Create Staff Member');
-});
+Route::get('/admin/create-staff', 'StaffController@CreatePage');
+
+Route::post('/admin/create-staff', 'StaffController@StoreData');
+
 
 Route::get('/admin/staff-search', function () {
     return view('staffsearch')->with('title', 'Staff Search');
 });
 
-Route::get('/admin/create-product', 'ProductController@page');
+Route::get('/admin/create-product', 'ProductController@CreatePage');
 
-Route::post('/admin/create-product', 'ProductController@store');
+Route::post('/admin/create-product', 'ProductController@StoreData');
 
 Route::get('/admin/product-search', function () {
 

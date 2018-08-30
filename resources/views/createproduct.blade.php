@@ -72,4 +72,5 @@
     </form>
   </div>
 </div>
+@include('partials.form_error')
 @endsection
