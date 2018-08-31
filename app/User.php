@@ -77,7 +77,11 @@ class User
 
     public static function CreateStaff($firstname, $middlename, $surname, $email, $access_level)
     {
-      DB::table('staff')->insert(['firstname' => $firstname,'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'access_level' => $access_level,'creation_date' => date('Y-m-d')])
+      DB::table('staff')->insert(['firstname' => $firstname,'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'access_level' => $access_level,'creation_date' => date('Y-m-d')]);
     }
 
+    public function LogIn($email,$password)
+    {
+      self::Customer()->where('email',$email)->where('password',$password)->get();
+    }
 }

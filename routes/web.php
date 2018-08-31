@@ -64,9 +64,9 @@ Route::get('/checkout', function () {
     return view('checkout')->with('title', 'Checkout');
 });
 
-Route::get('/login', function () {
-    return view('login')->with('title', 'Log In');
-});
+Route::get('/login', 'LogInController@CreatePage');
+
+Route::post('/login','LogInController@LogIn');
 
 Route::get('/new-account', function () {
     return view('newaccount')->with('title', 'New Account');
