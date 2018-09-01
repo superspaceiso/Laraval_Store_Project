@@ -13,7 +13,7 @@ class ProductController extends Controller
         return view('createproduct')->with('title', 'Create New Product');
     }
 
-    public function StoreData()
+    public function CreateProduct()
     {
         $validation_rules = [
         'product_name' => 'required',
@@ -28,7 +28,7 @@ class ProductController extends Controller
         $validate = Validator::make(request()->all(), $validation_rules);
 
         if ($validate->fails()) {
-            return view('createproduct')->with('title', 'Create New Product')->withErrors($validate);
+            return redirect('admin/create-product')->withErrors($validate);
         } else {
             $new_product = Products::CreateProduct(request('product_name'), request('product_brand'), request('product_category'), request('product_price'), request('product_quantity'), request('product_description'), request('on_sale'));
 

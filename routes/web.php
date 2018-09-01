@@ -18,7 +18,6 @@ use App\JsonDecoder;
 
 
 Route::get('/', function () {
-
     return view('index')->with('title', 'Index');
 });
 
@@ -65,7 +64,6 @@ Route::get('/checkout', function () {
 });
 
 Route::get('/login', 'LogInController@CreatePage');
-
 Route::post('/login','LogInController@LogIn');
 
 Route::get('/new-account', function () {
@@ -114,8 +112,7 @@ Route::get('/admin/outstanding-orders', function () {
 });
 
 Route::get('/admin/create-staff', 'StaffController@CreatePage');
-
-Route::post('/admin/create-staff', 'StaffController@StoreData');
+Route::post('/admin/create-staff', 'StaffController@CreateStaff');
 
 
 Route::get('/admin/staff-search', function () {
@@ -123,8 +120,7 @@ Route::get('/admin/staff-search', function () {
 });
 
 Route::get('/admin/create-product', 'ProductController@CreatePage');
-
-Route::post('/admin/create-product', 'ProductController@StoreData');
+Route::post('/admin/create-product', 'ProductController@CreateProduct');
 
 Route::get('/admin/product-search', function () {
 
@@ -139,31 +135,14 @@ Route::get('/admin/product-search/edit-product', function () {
     return view('editproduct')->with('title', 'Edit Product');
 });
 
-Route::get('/account', function () {
-
-    $account_info = User::AccountInfo(2);
-    $account_orders = User::OrderItems(2);
-
-    $title = 'Account';
-
-    return view('account', compact('account_info','account_orders','title'));
-});
+Route::get('/account', 'AccountController@Account');
 
 Route::get('/account/order/{id}', function ($id) {
 
 });
 
-Route::get('/account/edit-details', function () {
+Route::get('/account/edit-details', 'AccountController@EditDetails');
+Route::post('/account/edit-details', 'AccountController@UpdateDetails');
 
-    $account_info = User::AccountInfo(1);
-
-    $title = 'Edit Details';
-
-    $countries = new JsonDecoder('http://country.io/names.json');
-
-    return view('editdetails', compact('title','account_info','countries'));
-});
-
-Route::get('/account/change-password', function () {
-    return view('changepassword')->with('title', 'Change Password');
-});
+Route::get('/account/change-password', 'AccountController@ChangePassword');
+Route::post('/account/change-password', 'AccountController@UpdatePassword');

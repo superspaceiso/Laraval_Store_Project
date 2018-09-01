@@ -13,7 +13,7 @@ class StaffController extends Controller
     return view('createstaff')->with('title', 'Create Staff Member');
   }
 
-  public function StoreData()
+  public function CreateStaff()
   {
       $validation_rules =[
         'staff_firstname' => 'required',
@@ -25,7 +25,7 @@ class StaffController extends Controller
       $validate = Validator::make(request()->all(), $validation_rules);
 
       if ($validate->fails()) {
-          return view('createstaff')->with('title', 'Create Staff Member')->withErrors($validate);
+          return redirect('admin/create-staff')->withErrors($validate);
       } else {
           $new_staff = User::CreateStaff(request('staff_firstname'), request('staff_middlename'), request('staff_surname'), request('staff_email'), request('access_level'));
 

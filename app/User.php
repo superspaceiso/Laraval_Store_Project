@@ -60,19 +60,29 @@ class User
         self::AddressJunction()->insert(['customer_id' => $customer_id,'address_id' => $address_id]);
     }
 
-    public static function UpdateCustomer($id, $firstname, $middlename, $surname, $email, $password, $mobile_number, $phone_number, $address_line1, $address_line2, $address_line3, $town, $postcode, $county, $country)
+    public static function UpdateCustomer($customer_id, $firstname, $middlename, $surname, $email, $password, $mobile_number, $phone_number, $address_line1, $address_line2, $address_line3, $town, $postcode, $county, $country)
     {
-        self::Customer()->where('id', $id)->update(['firstname' => $firstname, 'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'mobile_number' => $mobile_number, 'phone_number' => $phone_number]);
+        self::Customer()->where('id', $customer_id)->update(['firstname' => $firstname, 'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'mobile_number' => $mobile_number, 'phone_number' => $phone_number]);
+    }
+
+    public static function GetPassword($customer_id)
+    {
+      return self::Customer()->select('password')->where('id','=', $customer_id)->get();
+    }
+
+    public static function UpdatePassword($customer_id, $new_password)
+    {
+      self::Customer()->where('id',$customer_id)->update(['password' => $new_password]);
     }
 
     public static function SearchCustomer($query)
     {
-        return self::Customer()->where('id', '=', $query)->orWhere('email', 'like', '%'.$query.'%')->orWhere('surname', 'like', '%'.$query.'%')->get();
+      return self::Customer()->where('id', '=', $query)->orWhere('email', 'like', '%'.$query.'%')->orWhere('surname', 'like', '%'.$query.'%')->get();
     }
 
     public static function DeleteCustomer($id)
     {
-        self::Customer()->where('id', $id)->delete();
+      self::Customer()->where('id', $id)->delete();
     }
 
     public static function CreateStaff($firstname, $middlename, $surname, $email, $access_level)
