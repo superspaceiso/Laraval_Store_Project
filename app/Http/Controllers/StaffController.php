@@ -22,14 +22,24 @@ class StaffController extends Controller
         'access_level' => 'required|numeric'
       ];
 
+      $firstname = request('staff_firstname');
+      $middlename = request('staff_middlename');
+      $surname = request('staff_surname');
+      $email = request('staff_email');
+      $access_level = request('access_level');
+
       $validate = Validator::make(request()->all(), $validation_rules);
 
       if ($validate->fails()) {
           return redirect('admin/create-staff')->withErrors($validate);
       } else {
-          $new_staff = User::CreateStaff(request('staff_firstname'), request('staff_middlename'), request('staff_surname'), request('staff_email'), request('access_level'));
 
-          return view('createstaff')->with('title', 'Create Staff Member');
+          $gen_password = str_random(12);
+          $password = password_hash($gen_password, PASSWORD_DEFAULT);
+
+          $new_staff = User::CreateStaff($firstname, $middlename, $surname, $email, $password, $access_level);
+
+          return redirect('admin/create-staff')->with('success', 'Account Created');
       }
     }
 }

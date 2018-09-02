@@ -56,18 +56,38 @@ class Products
         return self::Product()->where('id', '=', $query)->orWhere('name', 'like', '%'.$query.'%')->get();
     }
 
+    public static function CheckBrand($product_brand)
+    {
+      return self::ProductBrand()->where('name','=',$product_brand)->first();
+    }
+
+    public static function CheckCategory($product_category)
+    {
+      return self::ProductCategory()->where('name','=',$product_category)->first();
+    }
+
     public static function CreateProduct($product_name, $product_brand, $product_category, $product_price, $product_quantity, $product_description, $product_onsale)
     {
         $product_id = self::Product()->insertGetId(['name' => $product_name, 'description' => $product_description, 'quantity' => $product_quantity, 'on_sale' => $product_onsale, 'original_price' => $product_price,'insert_date' => date('Y-m-d')]);
-        $brand_id = self::ProductBrand()->insertGetId(['name' => $product_brand]);
-        $category_id = self::ProductCategory()->insertGetId(['name' => $product_category]);
-        self::BrandJunction()->insert(['brand_id' => $brand_id, 'product_id' => $product_id]);
-        self::CategoryJunction()->insert(['category_id' => $category_id, 'product_id' => $product_id]);
+
+        if($brand = self::CheckBrand($product_brand)){
+          self::BrandJunction()->insert(['brand_id' => $brand->id, 'product_id' => $product_id]);
+        } else {
+          $brand_id = self::ProductBrand()->insertGetId(['name' => $product_brand]);
+          self::BrandJunction()->insert(['brand_id' => $brand_id, 'product_id' => $product_id]);
+        }
+
+        if($category = self::CheckCategory($product_category)){
+          self::CategoryJunction()->insert(['category_id' => $category->id, 'product_id' => $product_id]);
+        } else {
+          $category_id = self::ProductCategory()->insertGetId(['name' => $product_category]);
+          self::CategoryJunction()->insert(['category_id' => $category_id, 'product_id' => $product_id]);
+        }
     }
 
     public static function UpdateProduct($product_id, $product_name, $product_brand, $product_category, $product_price, $product_quantity, $product_description, $product_onsale)
     {
-        self::Product()->where('id', $product_id)->update(['name' => $product_name, 'description' => $product_description, 'quantity' => $product_quantity, 'on_sale' => $product_onsale, 'new_price' => $product_price]);
+        self::Product()->where('id', $product_id)->update(['name' => $product_name, 'description' => $product_description, 'quantity' => $product_quantity, 'on_sale' => $product_onsale, 'new_price' => $product_price, 'update_date' => date('Y-m-d')]);
     }
 
     public static function DeleteProduct($product_id)

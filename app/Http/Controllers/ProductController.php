@@ -25,14 +25,22 @@ class ProductController extends Controller
         'on_sale' => 'required|numeric'
       ];
 
+      $product_name = request('product_name');
+      $product_brand = request('product_brand');
+      $product_category = request('product_category');
+      $product_price = request('product_price');
+      $product_quantity = request('product_quantity');
+      $product_description = request('product_description');
+      $on_sale = request('on_sale');
+
         $validate = Validator::make(request()->all(), $validation_rules);
 
         if ($validate->fails()) {
             return redirect('admin/create-product')->withErrors($validate);
         } else {
-            $new_product = Products::CreateProduct(request('product_name'), request('product_brand'), request('product_category'), request('product_price'), request('product_quantity'), request('product_description'), request('on_sale'));
+            $new_product = Products::CreateProduct($product_name, $product_brand, $product_category, $product_price, $product_category, $product_description, $on_sale);
 
-            return view('createproduct')->with('title', 'Create New Product');
+            return redirect('admin/create-product')->with('success', 'Product Created');
         }
     }
 }

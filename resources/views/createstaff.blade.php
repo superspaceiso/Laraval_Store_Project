@@ -56,4 +56,5 @@
   </div>
 </div>
 @include('partials.form_error')
+@include('partials.form_success')
 @endsection
