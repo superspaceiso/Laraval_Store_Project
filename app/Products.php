@@ -38,17 +38,17 @@ class Products
 
     public static function GetBrand($brand)
     {
-        return self::Product()->join('brand_map', 'products.id', '=', 'brand_map.product_id')->join('product_brands', 'product_brands.id', '=', 'brand_map.brand_id')->select('product_brands.name as brand_name', 'products.*')->where('product_brands.name', '=', $brand)->get();
+        return self::Product()->join('brand_map', 'products.id', '=', 'brand_map.product_id')->join('product_brands', 'product_brands.id', '=', 'brand_map.brand_id')->select('product_brands.name as brand_name', 'products.*')->where('product_brands.name', 'LIKE', $brand)->get();
     }
 
     public static function GetCategory($category)
     {
-        return self::Product()->join('category_map', 'products.id', '=', 'category_map.product_id')->join('product_categories', 'product_categories.id', '=', 'category_map.category_id')->select('product_categories.name as category_name', 'products.*')->where('product_categories.name', '=', $category)->get();
+        return self::Product()->join('category_map', 'products.id', '=', 'category_map.product_id')->join('product_categories', 'product_categories.id', '=', 'category_map.category_id')->select('product_categories.name as category_name', 'products.*')->where('product_categories.name', 'LIKE', $category)->get();
     }
 
     public static function GetProduct($id)
     {
-        return self::Product()->join('brand_map', 'products.id', '=', 'brand_map.product_id')->join('product_brands', 'product_brands.id', '=', 'brand_map.brand_id')->select('product_brands.name as brand_name', 'products.*')->where('products.id', '=', $id)->get();
+        return self::Product()->join('brand_map', 'products.id', '=', 'brand_map.product_id')->join('product_brands', 'product_brands.id', '=', 'brand_map.brand_id')->select('product_brands.name as brand_name', 'products.*')->where('products.id', '=', $id)->first();
     }
 
     public static function SearchProduct($query)

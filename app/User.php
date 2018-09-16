@@ -116,8 +116,8 @@ class User
       DB::table('staff')->insert(['firstname' => $firstname,'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'access_level' => $access_level,'creation_date' => date('Y-m-d')]);
     }
 
-    public function LogIn($email,$password)
+    public static function LogIn($email,$password)
     {
-      self::Customer()->where('email',$email)->where('password',$password)->get();
+      return self::Customer()->where('email',$email)->where('password',$password)->first();
     }
 }

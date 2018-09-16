@@ -21,43 +21,17 @@ Route::get('/', function () {
     return view('index')->with('title', 'Index');
 });
 
-Route::get('/store', function () {
+Route::get('/store', 'StoreController@Catalogue');
+Route::get('/store/product/{id}', 'StoreController@Product');
+Route::get('/store/category/{category}', 'StoreController@CategoryCatalogue');
+Route::get('/store/brand/{brand}', 'StoreController@BrandCatalogue');
 
-    $products = Products::ListProducts();
 
-    $title = 'Store';
-
-    return view('store',compact('products','title'));
-});
-
-Route::get('/store/product/{id}', function ($id) {
-
-    $product = Products::GetProduct($id);
-
-    return view('product',compact('product'));
-});
-
-Route::get('/store/category/{category}', function ($category) {
-
-    $products = Products::GetCategory($category);
-
-    $title = 'Store';
-
-    return view('store',compact('products','title'));
-});
-
-Route::get('/store/brand/{brand}', function ($brand) {
-
-    $products = Products::GetBrand($brand);
-
-    $title = 'Store';
-
-    return view('store',compact('products','title'));
-});
-
-Route::get('/basket', function () {
-    return view('basket')->with('title', 'Basket');
-});
+Route::get('/basket', 'BasketController@Basket');
+Route::get('/add/{id}', 'BasketController@AddToBasket');
+Route::get('/delete/{id}', 'BasketController@DeleteFromBasket');
+Route::get('/update/{id}', 'BasketController@UpdateItem');
+Route::get('/delete', 'BasketController@DeleteBasket');
 
 Route::get('/checkout', function () {
     return view('checkout')->with('title', 'Checkout');
@@ -146,3 +120,7 @@ Route::post('/account/edit-details', 'AccountController@UpdateDetails');
 
 Route::get('/account/change-password', 'AccountController@ChangePassword');
 Route::post('/account/change-password', 'AccountController@UpdatePassword');
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

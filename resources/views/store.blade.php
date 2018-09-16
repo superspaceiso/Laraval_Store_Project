@@ -19,10 +19,11 @@
         <td><a href="/store/product/{{$product->id}}/">{{$product->name}}</a></td>
         <td>{{$product->quantity > 0 ? "In Stock" : "Out of Stock"}}</td>
         <td>&pound;{{round($product->original_price,2)}}</td>
-        <td><a id="{{$product->id}}" class="btn btn-primary addtobasket" role="button">Add To Basket</a></td>
+        <td><a href="/add/{{$product->id}}" class="btn btn-primary" role="button">Add To Basket</a></td>
       </tr>
       @endforeach
     </table>
   </div>
 </div>
+@include('partials.basket_success')
 @endsection
