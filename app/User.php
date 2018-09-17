@@ -116,6 +116,16 @@ class User
       DB::table('staff')->insert(['firstname' => $firstname,'middlename' => $middlename,'surname' => $surname,'email' => $email,'password' => $password,'access_level' => $access_level,'creation_date' => date('Y-m-d')]);
     }
 
+    public static function SearchStaff($query)
+    {
+      return DB::table('staff')->where('id', '=', $query)->orWhere('email', 'like', '%'.$query.'%')->orWhere('surname', 'like', '%'.$query.'%')->get();
+    }
+
+    public static function DeleteStaff($id)
+    {
+      DB::table('staff')->where('id','=', $id)->delete();
+    }
+
     public static function LogIn($email,$password)
     {
       return self::Customer()->where('email',$email)->where('password',$password)->first();

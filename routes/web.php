@@ -29,9 +29,9 @@ Route::get('/store/brand/{brand}', 'StoreController@BrandCatalogue');
 
 Route::get('/basket', 'BasketController@Basket');
 Route::get('/add/{id}', 'BasketController@AddToBasket');
-Route::get('/delete/{id}', 'BasketController@DeleteFromBasket');
-Route::get('/update/{id}', 'BasketController@UpdateItem');
-Route::get('/delete', 'BasketController@DeleteBasket');
+Route::get('basket/delete/{id}', 'BasketController@DeleteFromBasket');
+Route::get('basket/update/{id}', 'BasketController@UpdateItem');
+Route::get('basket/delete', 'BasketController@DeleteBasket');
 
 Route::get('/checkout', function () {
     return view('checkout')->with('title', 'Checkout');
@@ -89,9 +89,10 @@ Route::get('/admin/create-staff', 'StaffController@CreatePage');
 Route::post('/admin/create-staff', 'StaffController@CreateStaff');
 
 
-Route::get('/admin/staff-search', function () {
-    return view('staffsearch')->with('title', 'Staff Search');
-});
+Route::get('/admin/staff-search', 'StaffController@SearchPage');
+Route::get('/admin/staff-search/delete/{id}', 'StaffController@DeleteStaff');
+Route::post('/admin/staff-search', 'StaffController@Search');
+
 
 Route::get('/admin/create-product', 'ProductController@CreatePage');
 Route::post('/admin/create-product', 'ProductController@CreateProduct');

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Validator;
+use Notifcation;
+use App\Notifications\StaffCreation;
+
 
 class StaffController extends Controller
 {
@@ -39,7 +42,52 @@ class StaffController extends Controller
 
           $new_staff = User::CreateStaff($firstname, $middlename, $surname, $email, $password, $access_level);
 
+          //Notification::route('mail', $email)->notify(new StaffCreation("Your staff account has been created the password is .$gen_password. this password should be changed as soon as possible"));
+
           return redirect('admin/create-staff')->with('success', 'Account Created');
       }
+    }
+
+    public function SearchPage()
+    {
+      $search = null;
+
+      $title = 'Staff Search';
+
+      return view('staffsearch', compact('search', 'title'));
+    }
+
+    public function Search()
+    {
+      $validation_rules = [
+        'query' => 'required',
+      ];
+
+      $query = request('query');
+
+      $validate = Validator::make(request()->all(), $validation_rules);
+
+      if ($validate->fails()) {
+          return redirect('admin/staff-search')->withErrors($validate);
+      } else {
+          $search = User::SearchStaff($query);
+
+          $title = 'Staff Search';
+
+          return view('staffsearch', compact('search', 'title'));
+      }
+
+    }
+
+    public function UpdateStaff()
+    {
+
+    }
+
+    public function DeleteStaff($id)
+    {
+      User::DeleteStaff($id);
+
+      return redirect()->back()->withInput();
     }
 }
