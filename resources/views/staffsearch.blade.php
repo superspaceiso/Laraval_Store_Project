@@ -16,12 +16,13 @@
       @csrf
       <div class="form-group row">
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="query" value="{{ old('query') }}">
+          <input type="text" class="form-control" name="query" autofocus value="{{ old('query') }}">
         </div>
         <div class="col-sm-2">
           <button type="submit" class="btn btn-primary">Search</button>
         </div>
       </div>
+    </form>
   </div>
 </div>
 @if(is_null($search))
@@ -45,7 +46,7 @@
         <td>{{$staff->firstname}} @if($staff->middlename) {{$staff->middlename}} @endif {{$staff->surname}}</td>
         <td>{{$staff->email}}</td>
         <td>{{$staff->access_level}}</td>
-        <td><a href="" class="btn btn-primary" role="button">Edit</a></td>
+        <td><a href="product-search/edit/{{$staff->id}}" class="btn btn-primary" role="button">Edit</a></td>
         <td><a href="staff-search/delete/{{$staff->id}}" class="btn btn-danger" role="button">Delete</a></td>
       </tr>
       @endforeach
@@ -53,5 +54,5 @@
   </div>
 </div>
 @endif
-
+@include('partials.form_error')
 @endsection

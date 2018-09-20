@@ -43,4 +43,51 @@ class ProductController extends Controller
             return redirect('admin/create-product')->with('success', 'Product Created');
         }
     }
+
+    public function SearchPage()
+    {
+      $search = null;
+
+      $title = 'Product Search';
+
+      return view('productsearch', compact('search', 'title'));
+    }
+
+    public function Search()
+    {
+      $validation_rules = [
+        'query' => 'required',
+      ];
+
+      $query = request('query');
+
+      $validate = Validator::make(request()->all(), $validation_rules);
+
+      if ($validate->fails()) {
+          return redirect('admin/product-search')->withErrors($validate);
+      } else {
+          $search = Products::SearchProduct($query);
+
+          $title = 'Product Search';
+
+          return view('productsearch', compact('search', 'title'));
+      }
+
+    }
+
+    public function Edit($id)
+    {
+      $product = Products::GetProduct($id);
+
+      $title = 'Edit Product';
+
+      return view('editproduct', compact('product','title'));
+    }
+
+    public function Delete($id)
+    {
+      Products::DeleteProduct($id);
+
+      return redirect()->back()->withInput();
+    }
 }

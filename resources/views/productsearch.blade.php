@@ -7,23 +7,26 @@
 @section ('content')
 <div class="row">
   <div class="col-sm">
-    <h1>Product Search</h1> 
-  </div>  
-</div>   
+    <h1>Product Search</h1>
+  </div>
+</div>
 <div class="row">
   <div class="col-sm">
-    <form>
+    <form method="post" action="/admin/product-search">
+      @csrf
       <div class="form-group row">
         <div class="col-sm-10">
-          <input type="text" class="form-control" placeholder="Enter Product Name or ID" autofocus>
+          <input type="text" name="query" class="form-control" placeholder="Enter Product Name or ID" autofocus>
         </div>
         <div class="col-sm-2">
-          <a href="" class="btn btn-primary" role="button">Search</a>
+          <button type="submit" class="btn btn-primary">Search</button>
         </div>
       </div>
-    </form>  
-  </div>  
+    </form>
+  </div>
 </div>
+@if(is_null($search))
+@else
 <div class="row">
   <div class="col-sm">
     <table class="table table-bordered table-hover">
@@ -38,18 +41,22 @@
           <th></th>
           <th></th>
         </tr>
-      </thead> 
+      </thead>
+      @foreach($search as $product)
       <tr>
+        <td>{{$product->id}}</td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><a href="editproduct" class="btn btn-primary" role="button">Edit</a></td>
-        <td><a href="" class="btn btn-danger" role="button">Delete</a></td>
-      </tr> 
+        <td>{{$product->name}}</td>
+        <td>{{$product->quantity}}</td>
+        <td>{{$product->original_price}}</td>
+        <td>{{$product->on_sale}}</td>
+        <td><a href="product-search/edit/{{$product->id}}" class="btn btn-primary" role="button">Edit</a></td>
+        <td><a href="product-search/delete/{{$product->id}}" class="btn btn-danger" role="button">Delete</a></td>
+      </tr>
+      @endforeach
     </table>
-  </div>  
-</div>        
+  </div>
+</div>
+@endif
+@include('partials.form_error')
 @endsection

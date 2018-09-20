@@ -21,12 +21,13 @@ Route::get('/', function () {
     return view('index')->with('title', 'Index');
 });
 
+//Storefront
 Route::get('/store', 'StoreController@Catalogue');
 Route::get('/store/product/{id}', 'StoreController@Product');
 Route::get('/store/category/{category}', 'StoreController@CategoryCatalogue');
 Route::get('/store/brand/{brand}', 'StoreController@BrandCatalogue');
 
-
+//Basket
 Route::get('/basket', 'BasketController@Basket');
 Route::get('/add/{id}', 'BasketController@AddToBasket');
 Route::get('basket/delete/{id}', 'BasketController@DeleteFromBasket');
@@ -85,40 +86,31 @@ Route::get('/admin/outstanding-orders', function () {
     return view('orders', compact('orders', 'title'));
 });
 
+// Staff Creation
 Route::get('/admin/create-staff', 'StaffController@CreatePage');
 Route::post('/admin/create-staff', 'StaffController@CreateStaff');
 
-
+//Staff Search
 Route::get('/admin/staff-search', 'StaffController@SearchPage');
-Route::get('/admin/staff-search/delete/{id}', 'StaffController@DeleteStaff');
 Route::post('/admin/staff-search', 'StaffController@Search');
+Route::get('/admin/staff-search/edit/{id}', 'StaffController@Edit');
+Route::get('/admin/staff-search/delete/{id}', 'StaffController@Delete');
 
-
+//Product Creation
 Route::get('/admin/create-product', 'ProductController@CreatePage');
 Route::post('/admin/create-product', 'ProductController@CreateProduct');
 
-Route::get('/admin/product-search', function () {
+//Product Search
+Route::get('/admin/product-search', 'ProductController@SearchPage');
+Route::post('/admin/product-search', 'ProductController@Search');
+Route::get('/admin/product-search/edit/{id}', 'ProductController@Edit');
+Route::get('/admin/product-search/delete/{id}', 'ProductController@Delete');
 
-    $search = Products::SearchProduct('Paper');
-
-    dd($search);
-
-    return view('productsearch')->with('title', 'Product Search');
-});
-
-Route::get('/admin/product-search/edit-product', function () {
-    return view('editproduct')->with('title', 'Edit Product');
-});
-
+//Customer Account
 Route::get('/account', 'AccountController@Account');
-
-Route::get('/account/order/{id}', function ($id) {
-
-});
 
 Route::get('/account/edit-details', 'AccountController@EditDetails');
 Route::post('/account/edit-details', 'AccountController@UpdateDetails');
-
 Route::get('/account/change-password', 'AccountController@ChangePassword');
 Route::post('/account/change-password', 'AccountController@UpdatePassword');
 

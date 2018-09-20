@@ -79,12 +79,12 @@ class StaffController extends Controller
 
     }
 
-    public function UpdateStaff()
+    public function Edit($id)
     {
-
+      return view('editstaff');
     }
 
-    public function DeleteStaff($id)
+    public function Delete($id)
     {
       User::DeleteStaff($id);
 
