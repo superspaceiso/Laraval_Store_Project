@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CustomerAddresses extends Migration
+class Addresses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CustomerAddresses extends Migration
      */
     public function up()
     {
-      Schema::create('customer_addresses', function (Blueprint $table) {
+      Schema::create('addresses', function (Blueprint $table) {
         $table->increments('id');
         $table->string('address_line1');
         $table->string('address_line2');

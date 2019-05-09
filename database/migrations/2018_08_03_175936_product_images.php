@@ -17,9 +17,11 @@ class ProductImages extends Migration
         $table->increments('id');
         $table->unsignedInteger('product_id');
         $table->string('name');
+        $table->string('url_slug');
         $table->string('description');
         $table->string('original_image');
         $table->string('image_resize');
+        $table->timestamps();
       });
       
       Schema::table('product_images', function (Blueprint $table) {

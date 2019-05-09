@@ -81,7 +81,13 @@ class StaffController extends Controller
 
     public function Edit($id)
     {
-      return view('editstaff');
+      $search = User::SearchStaff($id);
+
+      //dd($staff);
+
+      $title = 'Edit Staff';
+
+      return view('editstaff', compact('search','title'));
     }
 
     public function Delete($id)

@@ -13,12 +13,12 @@ class BrandMap extends Migration
      */
     public function up()
     {
-      Schema::create('brand_map', function (Blueprint $table) {
+      Schema::create('brand_junction', function (Blueprint $table) {
         $table->unsignedInteger('brand_id');
         $table->unsignedInteger('product_id');     
       });
       
-      Schema::table('brand_map', function (Blueprint $table) {
+      Schema::table('brand_junction', function (Blueprint $table) {
         $table->foreign('brand_id')->references('id')->on('product_brands');
         $table->foreign('product_id')->references('id')->on('products');        
       });
@@ -31,6 +31,6 @@ class BrandMap extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brand_map');
+        Schema::dropIfExists('brand_junction');
     }
 }

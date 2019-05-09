@@ -13,12 +13,12 @@ class CategoryMap extends Migration
      */
     public function up()
     {
-      Schema::create('category_map', function (Blueprint $table) {
+      Schema::create('category_junction', function (Blueprint $table) {
         $table->unsignedInteger('category_id');
         $table->unsignedInteger('product_id');  
       });
       
-      Schema::table('category_map', function (Blueprint $table) {
+      Schema::table('category_junction', function (Blueprint $table) {
         $table->foreign('category_id')->references('id')->on('product_categories');
         $table->foreign('product_id')->references('id')->on('products');           
       });
@@ -31,6 +31,6 @@ class CategoryMap extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_map');
+        Schema::dropIfExists('category_junction');
     }
 }

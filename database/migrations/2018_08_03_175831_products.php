@@ -16,13 +16,13 @@ class Products extends Migration
       Schema::create('products', function (Blueprint $table) {
         $table->increments('id');
         $table->string('name');
+        $table->string('url_slug');
         $table->text('description');
         $table->integer('quantity');            
         $table->boolean('on_sale');
         $table->decimal('original_price',11,4);
         $table->decimal('new_price',11,4)->nullable();
-        $table->date('insert_date');
-        $table->date('updated_date')->nullable();                                                          
+        $table->timestamps();
       });
     }
 

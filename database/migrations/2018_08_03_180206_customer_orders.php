@@ -13,12 +13,13 @@ class CustomerOrders extends Migration
      */
     public function up()
     {
-      Schema::create('customer_orders', function (Blueprint $table) {
+      Schema::create('orders', function (Blueprint $table) {
         $table->increments('id');
-        $table->unsignedInteger('customer_id');    
-        $table->date('order_date');
+        $table->unsignedInteger('customer_id');
+        $table->string('order_num');
         $table->decimal('order_total',11,4);
         $table->date('shipped_date')->nullable();
+        $table->timestamps();
       });
       
       Schema::table('customer_orders', function (Blueprint $table) {

@@ -19,14 +19,10 @@ class BasketController extends Controller
     return view('basket', compact('title','basket_items'));
   }
 
-  public function AddToBasket($id, $quantity)
+  public function AddToBasket($id)
   {
-    $items = [
-      'product_id' => $id,
-      'quantity' => $quantity,
-    ];
 
-    //Session::push('basket.product_id',$id);
+    //Session::push('basket',$id);
 
     return back()->with('basket_success', 'Added to Basket');
   }

@@ -13,14 +13,14 @@ class CustomerAddress extends Migration
      */
     public function up()
     {
-      Schema::create('customer_address', function (Blueprint $table) {
-        $table->unsignedInteger('customer_id');
+      Schema::create('address_junction', function (Blueprint $table) {
+        $table->unsignedInteger('user_id');
         $table->unsignedInteger('address_id');
       });
       
-      Schema::table('customer_address', function (Blueprint $table) {
-        $table->foreign('customer_id')->references('id')->on('customer');
-        $table->foreign('address_id')->references('id')->on('customer_addresses');
+      Schema::table('address_junction', function (Blueprint $table) {
+        $table->foreign('customer_id')->references('id')->on('user');
+        $table->foreign('address_id')->references('id')->on('addresses');
       });
       
     }

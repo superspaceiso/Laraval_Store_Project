@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPhoneToCustomer extends Migration
+class Countries extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddPhoneToCustomer extends Migration
      */
     public function up()
     {
-      Schema::table('customer', function($table) {
-          $table->string('mobile_number');
-          $table->string('phone_number');
-      });
+	    Schema::create('countries', function (Blueprint $table) {
+		    $table->increments('id');
+		    $table->string('country_name');
+		    $table->string('country_code');
+	    });
     }
 
     /**
@@ -26,5 +27,6 @@ class AddPhoneToCustomer extends Migration
      */
     public function down()
     {
+        //
     }
 }

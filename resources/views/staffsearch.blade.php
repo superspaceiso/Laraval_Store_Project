@@ -46,7 +46,7 @@
         <td>{{$staff->firstname}} @if($staff->middlename) {{$staff->middlename}} @endif {{$staff->surname}}</td>
         <td>{{$staff->email}}</td>
         <td>{{$staff->access_level}}</td>
-        <td><a href="product-search/edit/{{$staff->id}}" class="btn btn-primary" role="button">Edit</a></td>
+        <td><a href="staff-search/edit/{{$staff->id}}" class="btn btn-primary" role="button">Edit</a></td>
         <td><a href="staff-search/delete/{{$staff->id}}" class="btn btn-danger" role="button">Delete</a></td>
       </tr>
       @endforeach
