@@ -20,6 +20,8 @@ class CustomerOrders extends Migration
         $table->decimal('order_total',11,4);
         $table->boolean('paid');
         $table->date('shipped_date')->nullable();
+        $table->unsignedInteger('billing_address');
+        $table->unsignedInteger('shipping_address');
         $table->timestamps();
       });
       
