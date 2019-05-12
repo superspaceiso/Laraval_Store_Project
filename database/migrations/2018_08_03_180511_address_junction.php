@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CustomerAddress extends Migration
+class AddressJunction extends Migration
 {
     /**
      * Run the migrations.
@@ -32,6 +32,6 @@ class CustomerAddress extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_address');
+        Schema::dropIfExists('address_junction');
     }
 }

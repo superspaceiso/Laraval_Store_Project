@@ -18,6 +18,7 @@ class CustomerOrders extends Migration
         $table->unsignedInteger('customer_id');
         $table->string('order_num');
         $table->decimal('order_total',11,4);
+        $table->boolean('paid');
         $table->date('shipped_date')->nullable();
         $table->timestamps();
       });

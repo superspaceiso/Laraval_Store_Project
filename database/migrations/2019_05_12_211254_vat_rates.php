@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Countries extends Migration
+class VatRates extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class Countries extends Migration
      */
     public function up()
     {
-	    Schema::create('countries', function (Blueprint $table) {
+	    Schema::create('vat_rates', function (Blueprint $table) {
 		    $table->increments('id');
 		    $table->string('country_name');
-		    $table->string('country_code');
+		    $table->string('region_name')->nullable();
+		    $table->decimal('main_rate', 4,2);
+		    $table->decimal('reduced_rate',4,2)->nullable();
+		    $table->decimal('super_reduced_rate',4,2)->nullable();
+		    $table->decimal('parking_rate',4,2)->nullable();
 	    });
     }
 
@@ -27,6 +31,6 @@ class Countries extends Migration
      */
     public function down()
     {
-	    Schema::dropIfExists('countries');
+	    Schema::dropIfExists('vat_rates');
     }
 }

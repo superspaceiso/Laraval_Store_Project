@@ -16,11 +16,11 @@ class Addresses extends Migration
       Schema::create('addresses', function (Blueprint $table) {
         $table->increments('id');
         $table->string('address_line1');
-        $table->string('address_line2');
-        $table->string('address_line3');                
+        $table->string('address_line2')->nullable();
+        $table->string('address_line3')->nullable();
         $table->string('town');
         $table->string('postcode');
-        $table->string('county');
+        $table->string('county')->nullable();
         $table->string('country');                        
       });
     }
@@ -32,6 +32,6 @@ class Addresses extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_addresses');
+        Schema::dropIfExists('addresses');
     }
 }
