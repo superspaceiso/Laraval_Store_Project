@@ -27,7 +27,7 @@ class UserProfile extends Migration
 	    });
 
 	    Schema::table('user_profile', function (Blueprint $table) {
-		    $table->foreign('user_id')->references('id')->on('user');
+		    $table->foreign('user_id')->references('id')->on('users');
 	    });
     }
 

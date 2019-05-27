@@ -23,7 +23,7 @@ class OrderItems extends Migration
       });
       
       Schema::table('order_items', function (Blueprint $table) {
-        $table->foreign('order_id')->references('id')->on('customer_orders');
+        $table->foreign('order_id')->references('id')->on('orders');
       });
     }
 

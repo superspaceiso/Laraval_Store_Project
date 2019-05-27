@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CustomerOrders extends Migration
+class Orders extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CustomerOrders extends Migration
     {
       Schema::create('orders', function (Blueprint $table) {
         $table->increments('id');
-        $table->unsignedInteger('customer_id');
+        $table->unsignedInteger('user_id');
         $table->string('order_num');
         $table->decimal('order_total',11,4);
         $table->boolean('paid');
@@ -24,9 +24,9 @@ class CustomerOrders extends Migration
         $table->unsignedInteger('shipping_address');
         $table->timestamps();
       });
-      
-      Schema::table('customer_orders', function (Blueprint $table) {
-        $table->foreign('customer_id')->references('id')->on('customer');  
+	
+      Schema::table('orders', function (Blueprint $table) {
+      	$table->foreign('user_id')->references('id')->on('users');
       });
     }
 
@@ -37,6 +37,6 @@ class CustomerOrders extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_orders');
+        Schema::dropIfExists('orders');
     }
 }

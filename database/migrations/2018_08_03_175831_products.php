@@ -17,6 +17,8 @@ class Products extends Migration
         $table->increments('id');
         $table->string('name');
         $table->string('url_slug');
+        //$table->string('manufacturer_code')->nullable();
+        //$table->string('store_code');
         $table->text('description');
         $table->integer('quantity');            
         $table->boolean('on_sale');

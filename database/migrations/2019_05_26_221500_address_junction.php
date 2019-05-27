@@ -19,7 +19,7 @@ class AddressJunction extends Migration
       });
       
       Schema::table('address_junction', function (Blueprint $table) {
-        $table->foreign('customer_id')->references('id')->on('user');
+        $table->foreign('user_id')->references('id')->on('users');
         $table->foreign('address_id')->references('id')->on('addresses');
       });
       
