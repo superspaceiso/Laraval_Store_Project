@@ -16,6 +16,7 @@ class Users extends Migration
 		Schema::create('users', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('email')->unique();
+			$table->integer('permission')->default(0);
 			$table->timestamp('email_verified_at')->nullable();
 			$table->string('password');
 			$table->rememberToken();

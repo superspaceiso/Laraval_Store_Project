@@ -9,14 +9,14 @@ use Validator;
 
 class AccountController extends Controller
 {
-    public function Account()
+    public function AccountPage()
     {
-        $account_info = User::AccountInfo(2);
-        $account_orders = User::OrderItems(2);
+        //$account_info = User::AccountInfo(2);
+        //$account_orders = User::OrderItems(2);
 
         $title = 'Account';
 
-        return view('account', compact('account_info', 'account_orders', 'title'));
+        return view('account', compact('title'));
     }
 
     public function EditDetails()

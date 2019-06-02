@@ -106,14 +106,19 @@ Route::group(['prefix' => 'admin'], function(){
     Route::post('/product-search', 'ProductController@Search');
     Route::get('/product-search/edit/{id}', 'ProductController@Edit');
     Route::get('/admin/product-search/delete/{id}', 'ProductController@Delete');
+    
+//Order Search
+	Route::get('/order-search', )
+});
 
+Route::group(['prefix' => 'account'], function(){
 //Customer Account
-    Route::get('/account', 'AccountController@Account');
+    Route::get('/', 'AccountController@AccountPage');
 
-    Route::get('/account/edit-details', 'AccountController@EditDetails');
-    Route::post('/account/edit-details', 'AccountController@UpdateDetails');
-    Route::get('/account/change-password', 'AccountController@ChangePassword');
-    Route::post('/account/change-password', 'AccountController@UpdatePassword');
+    Route::get('/edit-details', 'AccountController@EditDetails');
+    Route::post('//edit-details', 'AccountController@UpdateDetails');
+    Route::get('/change-password', 'AccountController@ChangePassword');
+    Route::post('/change-password', 'AccountController@UpdatePassword');
 });
 
 //Auth::routes();

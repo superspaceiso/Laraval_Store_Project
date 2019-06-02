@@ -15,8 +15,8 @@ class ProductBrands extends Migration
     {
       Schema::create('product_brands', function (Blueprint $table) {
         $table->increments('id');
-        $table->string('name');
-        $table->string('url_slug');
+        $table->string('name')->unique();
+        $table->string('url_slug')->unique();
         $table->timestamps();
       });
     }

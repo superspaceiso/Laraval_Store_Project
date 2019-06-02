@@ -10,7 +10,7 @@ class StoreController extends Controller
 
     public function Catalogue()
     {
-      $products = Products::ListProducts();
+      $products = Products::all();
 
       $title = 'Store';
 
